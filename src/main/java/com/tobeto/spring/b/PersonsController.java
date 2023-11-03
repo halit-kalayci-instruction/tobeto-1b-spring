@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/persons") // Bu controllerın kontrol edeceği alt routeları tanımlamak
 public class PersonsController {
 
+    // In Memory DB
+    // CRUD => Create,Read,Update,Delete
     @GetMapping // api/persons
     public String get(){
         return "Get";
