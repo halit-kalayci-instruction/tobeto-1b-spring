@@ -17,6 +17,7 @@ public class Car
     @Column(name="model_name")
     private String modelName;
 
-    // one-to-many
-    // 14:10
+    @ManyToOne
+    @JoinColumn(name="brand_id")
+    private Brand brand;
 }
