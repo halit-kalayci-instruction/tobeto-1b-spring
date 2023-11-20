@@ -16,6 +16,8 @@ public class Brand {
     private String name;
 
 
+    // mappedBy => diğer classdaki attribute ismi
     @OneToMany(mappedBy = "brand") // attribute ismi
     private List<Car> cars;
 }
+

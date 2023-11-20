@@ -17,6 +17,8 @@ public class Car
     @Column(name="model_name")
     private String modelName;
 
+    // tekil alan ManyToOne - JoinColumn => FK'nın olduğu tablo
+    // çoğul alan OneToMany -
     @ManyToOne
     @JoinColumn(name="brand_id")
     private Brand brand;
