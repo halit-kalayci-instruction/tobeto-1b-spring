@@ -1,13 +1,12 @@
-package com.tobeto.spring.b.dtos;
+package com.tobeto.spring.b.dtos.requests.brand;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-// Kullanıcının brand eklemek istediğinde kullanacağım model..
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BrandForAddDto {
+public class AddBrandRequest {
     private String name;
 }

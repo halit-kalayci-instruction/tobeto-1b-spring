@@ -1,7 +1,7 @@
 package com.tobeto.spring.b.controllers;
 
-import com.tobeto.spring.b.dtos.BrandForAddDto;
-import com.tobeto.spring.b.dtos.BrandForDetailDto;
+import com.tobeto.spring.b.dtos.requests.brand.AddBrandRequest;
+import com.tobeto.spring.b.dtos.responses.brand.GetBrandResponse;
 import com.tobeto.spring.b.entities.Brand;
 import com.tobeto.spring.b.repositories.BrandRepository;
 import org.springframework.web.bind.annotation.*;
@@ -30,12 +30,12 @@ public class BrandsController {
     @GetMapping("{id}")
     // Brand ❌
     // BrandForDetailDto ✅
-    public BrandForDetailDto getById(@PathVariable int id)
+    public GetBrandResponse getById(@PathVariable int id)
     {
         // Optional<T> => ilgili filtreden bir veri dönmeyebilir
         Brand brand = brandRepository.findById(id).orElseThrow();
 
-        BrandForDetailDto dto = new BrandForDetailDto();
+        GetBrandResponse dto = new GetBrandResponse();
         dto.setName(brand.getName());
 
         return dto;
@@ -43,11 +43,11 @@ public class BrandsController {
     @PostMapping
     // Brand ❌
     // BrandForAddDto ✅
-    public void add(@RequestBody BrandForAddDto brandForAddDto){
+    public void add(@RequestBody AddBrandRequest request){
 
         // Manual Mapping => Auto Mapping
         Brand brand = new Brand();
-        brand.setName(brandForAddDto.getName());
+        brand.setName(request.getName());
 
         brandRepository.save(brand);
     }
@@ -66,3 +66,11 @@ public class BrandsController {
     }
 }
 // DTO -> Data Transfer Object
+// 14:00 dersteyiz Request-Response pattern
+
+// her istek için bir Request bir Response modeli bulunmalıdır.
+
+// AddBrandResponse add(AddBrandRequest request) { }
+
+// 5 adet entity CRUD işlemleri => Request-Response pattern uyumlu hale getirelim.
+// Gerekli noktalarda mapping yapılacak.

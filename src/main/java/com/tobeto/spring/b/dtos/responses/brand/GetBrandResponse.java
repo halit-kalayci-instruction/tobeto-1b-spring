@@ -1,4 +1,4 @@
-package com.tobeto.spring.b.dtos;
+package com.tobeto.spring.b.dtos.responses.brand;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BrandForDetailDto {
+public class GetBrandResponse {
     private String name;
 }
