@@ -8,6 +8,8 @@ import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class BrandManager implements BrandService
@@ -29,9 +31,15 @@ public class BrandManager implements BrandService
     public GetBrandResponse getById(int id) {
         Brand brand = brandRepository.findById(id).orElseThrow();
 
+
         GetBrandResponse dto = new GetBrandResponse();
         dto.setName(brand.getName());
 
         return dto;
+    }
+
+    @Override
+    public List<Brand> getByName(String name,int id) {
+         return brandRepository.findByNameLikeOrIdEquals("%"+name+"%", id);
     }
 }

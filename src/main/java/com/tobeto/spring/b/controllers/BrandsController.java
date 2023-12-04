@@ -29,4 +29,10 @@ public class BrandsController {
     {
         this.brandService.add(request);
     }
+
+    @GetMapping()
+    public List<Brand> getByName(@RequestParam String name, @RequestParam int id)
+    {
+        return this.brandService.getByName(name,id);
+    }
 }
