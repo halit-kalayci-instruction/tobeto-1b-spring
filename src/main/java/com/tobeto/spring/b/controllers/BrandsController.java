@@ -2,6 +2,7 @@ package com.tobeto.spring.b.controllers;
 
 import com.tobeto.spring.b.services.abstracts.BrandService;
 import com.tobeto.spring.b.services.dtos.requests.brand.AddBrandRequest;
+import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandListResponse;
 import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandResponse;
 import com.tobeto.spring.b.entities.Brand;
 import com.tobeto.spring.b.repositories.BrandRepository;
@@ -31,7 +32,7 @@ public class BrandsController {
     }
 
     @GetMapping()
-    public List<Brand> getByName(@RequestParam String name, @RequestParam int id)
+    public List<GetBrandListResponse> getByName(@RequestParam String name, @RequestParam int id)
     {
         return this.brandService.getByName(name,id);
     }
