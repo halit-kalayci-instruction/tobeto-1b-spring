@@ -2,6 +2,8 @@ package com.tobeto.spring.b.repositories;
 
 
 import com.tobeto.spring.b.entities.Brand;
+import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandListResponse;
+import jakarta.persistence.SqlResultSetMapping;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -22,4 +24,11 @@ public interface BrandRepository extends JpaRepository<Brand, Integer>
 
     @Query(value = "Select * from brands Where name LIKE %:name%", nativeQuery = true)
     List<Brand> search2(String name);
+
+    // b => Brand
+    // expected => GetBrandListResponse
+    @Query("SELECT new com.tobeto.spring.b.services.dtos.responses.brand.GetBrandListResponse(b.name) " +
+            "FROM Brand b Where b.name LIKE %:name%")
+    List<GetBrandListResponse> search3(String name);
+
 }
