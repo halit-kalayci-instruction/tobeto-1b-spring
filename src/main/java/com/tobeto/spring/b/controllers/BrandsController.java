@@ -36,4 +36,10 @@ public class BrandsController {
     {
         return this.brandService.getByName(name,id);
     }
+
+    @GetMapping("search")
+    public List<Brand> search(@RequestParam String name){
+        return this.brandService.search(name);
+    }
+
 }

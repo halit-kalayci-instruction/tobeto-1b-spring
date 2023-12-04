@@ -50,4 +50,9 @@ public class BrandManager implements BrandService
         }
         return response;
     }
+
+    @Override
+    public List<Brand> search(String name) {
+        return brandRepository.search2(name);
+    }
 }

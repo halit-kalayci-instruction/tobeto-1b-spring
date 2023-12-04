@@ -12,4 +12,5 @@ public interface BrandService
     void add(AddBrandRequest request);
     GetBrandResponse getById(int id);
     List<GetBrandListResponse> getByName(String name, int id);
+    List<Brand> search(String name);
 }
