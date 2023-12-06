@@ -20,6 +20,14 @@ public class BrandManager implements BrandService
 
     @Override
     public void add(AddBrandRequest request) {
+        // Aynı isimde iki brand olamaz
+        List<Brand> brandsWithSameName = brandRepository.findByName(request.getName().trim());
+
+        if(brandsWithSameName.size() > 0)
+        {
+            throw new RuntimeException("Aynı isimle iki marka eklenemez.");
+        }
+
         Brand brand = new Brand();
         brand.setName(request.getName());
 
