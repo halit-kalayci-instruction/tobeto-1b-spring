@@ -6,6 +6,7 @@ import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandListResponse;
 import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandResponse;
 import com.tobeto.spring.b.entities.Brand;
 import com.tobeto.spring.b.repositories.BrandRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class BrandsController {
         return this.brandService.getById(id);
     }
     @PostMapping
-    public void add(@RequestBody AddBrandRequest request)
+    public void add(@RequestBody @Valid AddBrandRequest request)
     {
         this.brandService.add(request);
     }

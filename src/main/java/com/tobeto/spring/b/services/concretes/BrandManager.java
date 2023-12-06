@@ -20,9 +20,6 @@ public class BrandManager implements BrandService
 
     @Override
     public void add(AddBrandRequest request) {
-        if(request.getName().length() < 2)
-            throw new RuntimeException("Marka adı 2 haneden kısa olamaz");
-
         Brand brand = new Brand();
         brand.setName(request.getName());
 
