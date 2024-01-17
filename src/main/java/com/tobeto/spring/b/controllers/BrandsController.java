@@ -4,10 +4,7 @@ import com.tobeto.spring.b.services.abstracts.BrandService;
 import com.tobeto.spring.b.services.dtos.requests.brand.AddBrandRequest;
 import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandListResponse;
 import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandResponse;
-import com.tobeto.spring.b.entities.Brand;
-import com.tobeto.spring.b.repositories.BrandRepository;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

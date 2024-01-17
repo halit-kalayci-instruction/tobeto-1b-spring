@@ -3,7 +3,6 @@ package com.tobeto.spring.b.repositories;
 
 import com.tobeto.spring.b.entities.Brand;
 import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandListResponse;
-import jakarta.persistence.SqlResultSetMapping;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

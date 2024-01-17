@@ -1,11 +1,11 @@
 package com.tobeto.spring.b.services.concretes;
 
-import com.tobeto.spring.b.entities.Brand;
-import com.tobeto.spring.b.repositories.BrandRepository;
-import com.tobeto.spring.b.services.abstracts.BrandService;
 import com.tobeto.spring.b.services.dtos.requests.brand.AddBrandRequest;
 import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandListResponse;
 import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandResponse;
+import com.tobeto.spring.b.entities.Brand;
+import com.tobeto.spring.b.repositories.BrandRepository;
+import com.tobeto.spring.b.services.abstracts.BrandService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

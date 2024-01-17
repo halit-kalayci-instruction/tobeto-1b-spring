@@ -1,6 +1,5 @@
 package com.tobeto.spring.b.services.abstracts;
 
-import com.tobeto.spring.b.entities.Brand;
 import com.tobeto.spring.b.services.dtos.requests.brand.AddBrandRequest;
 import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandListResponse;
 import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandResponse;

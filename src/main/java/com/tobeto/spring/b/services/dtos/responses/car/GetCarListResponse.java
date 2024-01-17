@@ -1,6 +1,5 @@
 package com.tobeto.spring.b.services.dtos.responses.car;
 
-import com.tobeto.spring.b.entities.Brand;
 import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandListResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;

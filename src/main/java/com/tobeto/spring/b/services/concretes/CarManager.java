@@ -1,10 +1,8 @@
 package com.tobeto.spring.b.services.concretes;
 
-import com.tobeto.spring.b.entities.Brand;
-import com.tobeto.spring.b.repositories.CarRepository;
 import com.tobeto.spring.b.services.abstracts.CarService;
-import com.tobeto.spring.b.services.dtos.responses.brand.GetBrandListResponse;
 import com.tobeto.spring.b.services.dtos.responses.car.GetCarListResponse;
+import com.tobeto.spring.b.repositories.CarRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
