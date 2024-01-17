@@ -23,7 +23,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests((req) -> req.anyRequest().permitAll());
+                .authorizeHttpRequests((req) -> req.anyRequest().authenticated());
 
         return http.build();
     }

@@ -38,9 +38,9 @@ public class GlobalExceptionHandler {
 
     // Known Types
     // Unknown types
-    @ExceptionHandler({Exception.class})
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleUnkownErrors(){
-        return "Bilinmedik hata";
-    }
+    //@ExceptionHandler({Exception.class})
+    //@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    //public String handleUnkownErrors(){
+      //  return "Bilinmedik hata";
+    //}
 }
