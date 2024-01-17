@@ -5,6 +5,8 @@ import com.tobeto.spring.b.services.dtos.requests.user.CreateUserRequest;
 import com.tobeto.spring.b.entities.User;
 import com.tobeto.spring.b.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +25,10 @@ public class UserManager implements UserService {
                 .build();
 
         userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found!"));
     }
 }
