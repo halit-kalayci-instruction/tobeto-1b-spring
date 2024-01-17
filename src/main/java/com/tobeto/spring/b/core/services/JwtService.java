@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.Map;
 import java.util.function.Function;
 
 @Service
@@ -20,19 +21,22 @@ public class JwtService {
     @Value("${application.security.jwt.expiration}")
     private long expiration;
 
-    public String extractUsername(String token){
-        return extractClaim(token, Claims::getSubject);
-    }
 
-    public String generateToken(UserDetails user){
+    public String generateToken(UserDetails user, Map<String,Object> claims){
         return Jwts
                 .builder()
+                .setClaims(claims)
                 .setSubject(user.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSigninKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
+
+    public String extractUsername(String token){
+        return extractClaim(token, Claims::getSubject);
+    }
+
 
     public boolean isTokenValid(String token, UserDetails user){
         final String usernameFromToken = extractUsername(token);
