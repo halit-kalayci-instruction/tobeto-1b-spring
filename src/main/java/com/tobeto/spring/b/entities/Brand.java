@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,6 @@ public class Brand {
 
     @Column(name="name")
     private String name;
-
 
     // mappedBy => diğer classdaki attribute ismi
     @OneToMany(mappedBy = "brand") // attribute ismi
