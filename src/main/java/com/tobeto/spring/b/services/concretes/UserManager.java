@@ -1,21 +1,31 @@
 package com.tobeto.spring.b.services.concretes;
 
+import com.tobeto.spring.b.core.services.JwtService;
 import com.tobeto.spring.b.services.abstracts.UserService;
 import com.tobeto.spring.b.services.dtos.requests.auth.LoginRequest;
 import com.tobeto.spring.b.services.dtos.requests.user.CreateUserRequest;
 import com.tobeto.spring.b.entities.User;
 import com.tobeto.spring.b.repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
 public class UserManager implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
 
     @Override
     public void register(CreateUserRequest request) {
@@ -29,8 +39,15 @@ public class UserManager implements UserService {
     }
 
     @Override
-    public void login(LoginRequest request) {
-
+    public String login(LoginRequest request) {
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        if(authentication.isAuthenticated())
+        {
+            // jwt oluştur.
+            Map<String,Object> claims = new HashMap<>();
+            return jwtService.generateToken(request.getEmail(), claims);
+        }
+        throw new RuntimeException("Bilgiler hatalı");
     }
 
     @Override

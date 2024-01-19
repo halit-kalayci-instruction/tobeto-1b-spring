@@ -21,8 +21,9 @@ import java.util.Map;
 @AllArgsConstructor
 public class UsersController {
     private final UserService userService;
-    private final AuthenticationManager authenticationManager;
-    private final JwtService jwtService;
+
+    // TODO: AuthController-AuthManager
+    // api/auth/login api/auth/register
     @PostMapping
     public void register(@RequestBody CreateUserRequest request)
     {
@@ -31,13 +32,6 @@ public class UsersController {
 
     @PostMapping("login")
     public String login(@RequestBody LoginRequest request) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-        if(authentication.isAuthenticated())
-        {
-            // jwt oluştur.
-            Map<String,Object> claims = new HashMap<>();
-            return jwtService.generateToken(request.getEmail(), claims);
-        }
-        throw new RuntimeException("Bilgiler hatalı");
+       return userService.login(request);
     }
 }
