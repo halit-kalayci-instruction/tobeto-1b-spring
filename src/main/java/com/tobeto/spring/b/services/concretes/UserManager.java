@@ -24,8 +24,7 @@ public class UserManager implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    private final AuthenticationManager authenticationManager;
-    private final JwtService jwtService;
+
 
     @Override
     public void register(CreateUserRequest request) {
@@ -40,14 +39,7 @@ public class UserManager implements UserService {
 
     @Override
     public String login(LoginRequest request) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-        if(authentication.isAuthenticated())
-        {
-            // jwt oluştur.
-            Map<String,Object> claims = new HashMap<>();
-            return jwtService.generateToken(request.getEmail(), claims);
-        }
-        throw new RuntimeException("Bilgiler hatalı");
+       return "";
     }
 
     @Override
